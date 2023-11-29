@@ -105,6 +105,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  SCH_Init();
   SCH_Add_Task(ToggleLED1, 0, 100);
 //  SCH_Add_Task(ToggleLED2, 100, 200);
 //  SCH_Add_Task(ToggleLED3, 0, 150);
