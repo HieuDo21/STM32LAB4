@@ -68,6 +68,9 @@ void ToggleLED3(){
 void ToggleLED4(){
 	HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
 }
+void ToggleLED5(){
+	HAL_GPIO_TogglePin(LED_5_GPIO_Port, LED_5_Pin);
+}
 /* USER CODE END 0 */
 
 /**
@@ -106,10 +109,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   SCH_Init();
-  SCH_Add_Task(ToggleLED1, 100, 100);
-  SCH_Add_Task(ToggleLED2, 100, 200);
-  SCH_Add_Task(ToggleLED3, 0, 150);
-  SCH_Add_Task(ToggleLED4, 200, 0);
+  SCH_Add_Task(ToggleLED1, 2000, 500);
+  SCH_Add_Task(ToggleLED2, 1000, 1000);
+  SCH_Add_Task(ToggleLED3, 1000, 0);			 // one shot task
+  SCH_Add_Task(ToggleLED4, 1500, 1200);
+  SCH_Add_Task(ToggleLED5, 1500, 2500);
   while (1)
   {
 	  SCH_Dispatch_Tasks();
@@ -214,12 +218,12 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
-                          |LED_5_Pin|GPIO_PIN_6, GPIO_PIN_RESET);
+                          |LED_5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin LED_4_Pin
-                           LED_5_Pin PA6 */
+                           LED_5_Pin */
   GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
-                          |LED_5_Pin|GPIO_PIN_6;
+                          |LED_5_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

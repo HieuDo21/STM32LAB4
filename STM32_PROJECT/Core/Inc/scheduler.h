@@ -13,6 +13,7 @@
 
 #define SCH_MAX_TASKS 			10
 #define	NO_TASK_ID				0
+#define TIMER_TICK 				10
 typedef struct {
 	void ( * pTask)(void);
 	uint32_t Delay;
