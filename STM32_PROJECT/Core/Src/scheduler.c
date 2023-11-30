@@ -53,7 +53,7 @@ void SCH_Add_Task(void (* pFunction)(), uint32_t DELAY, uint32_t PERIOD){
 }
 
 
-uint8_t SCH_Delete_Task(uint32_t taskID){
+void SCH_Delete_Task(uint32_t taskID){
 //	uint8_t Return_code  = 0;
 //	uint8_t taskIndex;
 //	uint8_t j;
@@ -88,7 +88,6 @@ uint8_t SCH_Delete_Task(uint32_t taskID){
 	SCH_tasks_G[taskID].Delay = 0;
 	SCH_tasks_G[taskID].RunMe = 0;
 	SCH_tasks_G[taskID].TaskID = 0;
-	return 0;
 }
 
 void SCH_Dispatch_Tasks(void){
