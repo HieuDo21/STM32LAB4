@@ -33,8 +33,9 @@ void SCH_Update(void){
 		 if(SCH_tasks_G[i].Delay > 0){
 			 SCH_tasks_G[i].Delay --;
 		 }else{
-			 SCH_tasks_G[i].Delay = SCH_tasks_G[i].Period;
-			 SCH_tasks_G[i].RunMe += 1;
+
+				 SCH_tasks_G[i].Delay = SCH_tasks_G[i].Period;
+				 SCH_tasks_G[i].RunMe += 1;
 		 }
 	 }
 }
@@ -102,6 +103,10 @@ void SCH_Dispatch_Tasks(void){
 			 if(SCH_tasks_G[i].pTask){
 				 (*SCH_tasks_G[i].pTask)();
 			 }
+			 if(SCH_tasks_G[i].Period == 0){
+				 SCH_Delete_Task(i);
+			 }
+
 
 		 }
 	 }
